@@ -1,5 +1,7 @@
 
 picture {
-    height: 30px;  
+    height: 25px;  
     display: flex;
-}
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}   
