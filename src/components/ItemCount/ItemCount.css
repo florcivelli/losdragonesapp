@@ -1,0 +1,13 @@
+p {
+    display: inline;
+    font-size: 20px;
+}
+
+button {
+    border: none;
+}
+
+.botonCarrito {
+    background-color: lightpink;
+    
+}
