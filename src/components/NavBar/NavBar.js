@@ -2,6 +2,7 @@ import CartWidget from '../CartWidget/CartWidget';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav'
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -10,9 +11,9 @@ const NavBar = () => {
                 <Container>
                 <Navbar.Brand href="#home">Los Dragones Vinos</Navbar.Brand>
                 <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Vinos</Nav.Link>
-                <Nav.Link href="#pricing">Contacto</Nav.Link>
+                <NavLink to= '/'>Home</NavLink>
+                <NavLink to= '/tintos'>Tintos</NavLink>
+                <NavLink to= '/blancos'>Blancos</NavLink>
                 </Nav>
                 </Container>
             </Navbar>

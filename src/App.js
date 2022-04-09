@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
 
@@ -14,8 +15,15 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar/>
-      <ItemListContainer/>
+      <BrowserRouter>
+        <NavBar/>
+        <Routes>
+          <Route path='/' element={<ItemListContainer/>} />
+          <Route path='/category/:categoryId' element={<ItemListContainer/>} />
+        </Routes>
+      </BrowserRouter>
+
+      
       <ItemCount initial={1} stock={15} onAdd={onAdd}/>
       <ItemDetailContainer/>
     </div>
