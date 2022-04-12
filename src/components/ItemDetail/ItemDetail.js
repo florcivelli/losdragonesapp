@@ -1,7 +1,15 @@
 import './ItemDetail.css'
+import ItemCount from '../ItemCount/ItemCount'
+import { useState } from 'react'
 
 const ItemDetail = ({id, title, img, description, price, stock}) => {
-    
+    const [quantity, setQuantity] = useState (0)
+
+    const handleOnAdd = (count) => {
+        console.log('agregué al carrito')
+        setQuantity(count)
+    }
+
     return (
         <article className='Contenedor'>
             <header>
@@ -15,6 +23,9 @@ const ItemDetail = ({id, title, img, description, price, stock}) => {
                 <p>Precio: $ {price}</p>
                 <p>Stock: {stock}</p>
             </section>
+            <footer>
+                {quantity === 0 ? <ItemCount onAdd={handleOnAdd} /> : <button>Ir al carrito</button>}
+            </footer>
         </article>
     )
 }
