@@ -19,11 +19,11 @@ export const CartContextProvider = ({ children }) => {
     /* const removeItem = (itemId) => {
 
     }
-
+*/
     const clearCart = () => {
-        
+        setCart([])
     }
- */
+ 
     const getQuantity = () => {
         let count = 0
         cart.forEach(prod => {
@@ -37,8 +37,8 @@ export const CartContextProvider = ({ children }) => {
         <CartContext.Provider value={{ 
             cart, 
             addItem,
-            /* removeItem,
-            clearCart, */
+            /* removeItem,*/
+            clearCart, 
             getQuantity
         }}>
             {children}
