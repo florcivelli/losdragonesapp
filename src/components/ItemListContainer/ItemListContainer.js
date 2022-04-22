@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import './ItemListContainer.css'
 import ItemList from '../ItemList/ItemList'
-/* import { getProducts, getProductsByCategory} from '../../asynmock' */
+import { getProducts} from '../../asynmock'
 import { useParams } from 'react-router-dom'
 import { getDocs, collection, query, where } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase'
@@ -16,8 +16,8 @@ const ItemListContainer = ()=> {
      useEffect(() => {
         setLoading(true)
 
-        /*if(categoryId) {
-            getProductsByCategory(categoryId).then(items => {
+        if(categoryId) {
+            getProducts(categoryId).then(items => {
                 setProducts(items)
             }).catch(err => {
                 console.log(err)
@@ -29,7 +29,7 @@ const ItemListContainer = ()=> {
                 console.log(err)
             })
 
-        } */
+        }
 
         const collectionRef = categoryId 
         ? query(collection(firestoreDb, 'products'), where ('category', '==', categoryId))
@@ -57,6 +57,20 @@ const ItemListContainer = ()=> {
     return (
         <div className="ItemListContainer" onClick={() => console.log ('Click en ItemListContainer')}>
             
+            
+            
+                    <ItemList products={products}/> 
+                
+            
+        </div>
+    )    
+    
+}
+
+export default ItemListContainer
+
+/* <div className="ItemListContainer" onClick={() => console.log ('Click en ItemListContainer')}>
+            
             {
                 loading ? 
                     <h2>Cargando...</h2> :  
@@ -65,8 +79,4 @@ const ItemListContainer = ()=> {
                     <h2>No se encontraron productos</h2>
             }
         </div>
-    )    
-    
-}
-
-export default ItemListContainer
+ */
