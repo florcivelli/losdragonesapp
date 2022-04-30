@@ -2,13 +2,13 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import './ItemListContainer.css'
 import ItemList from '../ItemList/ItemList'
-import { getProducts} from '../../asynmock'
+//import { getProducts} from '../../asynmock'
 import { useParams } from 'react-router-dom'
-import { getDocs, collection, query, where } from 'firebase/firestore'
+import { getDocs, collection, query, where, limit } from 'firebase/firestore'
 import { firestoreDb } from '../../services/firebase'
 
 const ItemListContainer = ()=> {
-    const [products, setProducts] = useState([])
+    const [losdragones, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
     const { categoryId } = useParams()
@@ -16,7 +16,7 @@ const ItemListContainer = ()=> {
      useEffect(() => {
         setLoading(true)
 
-        if(categoryId) {
+      /*   if(categoryId) {
             getProducts(categoryId).then(items => {
                 setProducts(items)
             }).catch(err => {
@@ -29,19 +29,19 @@ const ItemListContainer = ()=> {
                 console.log(err)
             })
 
-        }
+        } */
 
         const collectionRef = categoryId 
-        ? query(collection(firestoreDb, 'products'), where ('category', '==', categoryId))
-        : collection(firestoreDb, 'products')
+        ? query(collection(firestoreDb, 'losdragones'), where ('category', '==', categoryId), limit(10))
+        : collection(firestoreDb, 'losdragones')
 
         getDocs(collectionRef).then(querySnapshot => {
            
-            const products = querySnapshot.docs.map(doc => {
+            const losdragones = querySnapshot.docs.map(doc => {
                 return {id: doc.id, ...doc.data}
             })
             
-            setProducts(products)
+            setProducts(losdragones)
         }).catch(error => {
             console.log(error)
         }).finally(() => {
@@ -55,13 +55,16 @@ const ItemListContainer = ()=> {
     }, [categoryId])
 
     return (
+
         <div className="ItemListContainer" onClick={() => console.log ('Click en ItemListContainer')}>
             
-            
-            
-                    <ItemList products={products}/> 
-                
-            
+            {
+                loading ? 
+                    <h2>Cargando...</h2> :  
+                    losdragones.length > 0 ? 
+                    <ItemList products={losdragones}/> :
+                    <h2>No se encontraron productos</h2>
+            }
         </div>
     )    
     
@@ -69,14 +72,14 @@ const ItemListContainer = ()=> {
 
 export default ItemListContainer
 
-/* <div className="ItemListContainer" onClick={() => console.log ('Click en ItemListContainer')}>
-            
-            {
-                loading ? 
-                    <h2>Cargando...</h2> :  
-                products.length > 0 ? 
-                    <ItemList products={products}/> :
-                    <h2>No se encontraron productos</h2>
-            }
-        </div>
+/* 
  */
+/* 
+        <div className="ItemListContainer" onClick={() => console.log ('Click en ItemListContainer')}>
+            
+            
+            
+        <ItemList products={products}/> 
+    
+
+        </div> */
