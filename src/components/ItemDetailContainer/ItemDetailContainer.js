@@ -7,7 +7,7 @@ import { getDoc, doc } from 'firebase/firestore'
 
 const ItemDetailContainer = ({addToCart, cart}) => {
 
-    const [product, setProduct] = useState ()
+    const [losdragones, setProduct] = useState ()
     const [loading, setLoading] = useState(true)
 
     const { productId } = useParams()
@@ -22,11 +22,11 @@ const ItemDetailContainer = ({addToCart, cart}) => {
             setLoading(false)
         }) */
 
-        const docRef =doc(firestoreDb, 'products', productId)
+        const docRef = doc(firestoreDb, 'losdragones', productId)
 
         getDoc(docRef).then(querySnapshot =>{
-            const product = { id: querySnapshot.id, ...querySnapshot.data()}
-            setProduct(product)
+            const losdragones = { id: querySnapshot.id, ...querySnapshot.data()}
+            setProduct(losdragones)
         }).catch(error =>{
             console.log(error)
         }).finally(() =>{
@@ -40,7 +40,7 @@ const ItemDetailContainer = ({addToCart, cart}) => {
     }
    
     return (
-        <ItemDetail {...product} addToCart={addToCart} cart={cart}/>
+        <ItemDetail {...losdragones} addToCart={addToCart} cart={cart}/>
     )
 }
 

@@ -1,5 +1,5 @@
 .Contenedor {
-    width: 350px;
+    width: 450px;
     padding: 60px;
     margin: 30px;
     font-size: 15px;
@@ -8,8 +8,18 @@
 }
 
 .Imagen {
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 350px;
     object-fit: cover;
     object-position: center;
+}
+
+.Descripcion {
+    display: block;
+}
+
+.irAlCarrito {
+    text-decoration: none;
+    color: blueviolet;
+    background-color: beige;
 }

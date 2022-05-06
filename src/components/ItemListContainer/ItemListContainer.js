@@ -32,13 +32,13 @@ const ItemListContainer = ()=> {
         } */
 
         const collectionRef = categoryId 
-        ? query(collection(firestoreDb, 'losdragones'), where ('category', '==', categoryId), limit(10))
+        ? query(collection(firestoreDb, 'losdragones'), where ('category', '==', categoryId))
         : collection(firestoreDb, 'losdragones')
 
         getDocs(collectionRef).then(querySnapshot => {
            
             const losdragones = querySnapshot.docs.map(doc => {
-                return {id: doc.id, ...doc.data}
+                return {id: doc.id, ...doc.data()}
             })
             
             setProducts(losdragones)

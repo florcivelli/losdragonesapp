@@ -1,6 +1,6 @@
 .Contenedor {
-    width: 350px;
-    padding: 60px;
+    width: 400px;
+    padding: 20px;
     margin: 30px;
     font-size: 15px;
     background-color: rgb(236, 216, 240);
@@ -15,9 +15,14 @@
 }
 
 .Imagen {
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 350px;
     object-fit: cover;
     object-position: center;
 }
 
+.verDetalle {
+    text-decoration: none;
+    color: blueviolet;
+    background-color: beige;
+}

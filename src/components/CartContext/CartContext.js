@@ -7,9 +7,9 @@ export const CartContextProvider = ({ children }) => {
 
     console.log(cart)
 
-    const addItem = (product, quantity) => {
+    const addItem = (losdragones, quantity) => {
         const objItemCart = {
-            ...product,
+            ...losdragones,
             quantity
         }
         

@@ -6,16 +6,16 @@ const Item = ({id, title, img, price}) => {
     return (
         <article className='Contenedor'>
             <header className='Header'>
-                <h3 className='Titulo'>{title}</h3>
+                <h4 className='Titulo'>{title}</h4>
             </header>
             <picture>
                 <img className='Imagen' src= {img} alt= {title}/>
             </picture>
             <section>
-                <h3>Precio: $ {price}</h3>
+                <h4>Precio: $ {price}</h4>
             </section>
             <footer className='Footer'>
-                <Link to={`/detail/${id}`}>Ver detalle</Link>
+                <Link className='verDetalle' to={`/detail/${id}`}>Ver detalle</Link>
             </footer>
         </article>
     )

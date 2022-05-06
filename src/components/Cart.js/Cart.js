@@ -3,6 +3,7 @@ import CartContext from '../CartContext/CartContext'
 import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from "firebase/firestore"
 import { firestoreDb } from "../../services/firebase"
 import { useNotification } from "../../notification/notification"
+import './Cart.css' 
 
 const Cart = () => {
 
@@ -45,13 +46,20 @@ const Cart = () => {
                 } else {
                     return Promise.reject( {title: 'outOfStockError', losdragones: outOfStock} )
                 }
-            }).then(( {id} ) => {
+            }).then(() => {
                 batch.commit()
-                setNotification('success',`La orden se generó exitosamente, código de orden es: ${id}`)
+                console.log ('se generó la orden')
+                setNotification(`La orden se generó exitosamente`)
+            }).catch((error) => {
+                if(error && error.title === 'outOfStockError' && error.losdragones.length > 0) {
+                    console.log(error.losdragones)
+                } else {
+                    console.log(error)
+                }
+                
             })
     }
 
-   
 
     if(getQuantity() === 0){
         return(
@@ -59,14 +67,14 @@ const Cart = () => {
         )
     }
     return (
-        <div>
+        <div className="contenedorCart">
             <h1>Cart</h1>
             
-                {cart.map(prod => <li key={prod.id}>{prod.title} Precio unit: $ {prod.price} <button onClick={() => removeItem(prod.id)}></button> </li>)}
+                {cart.map(prod => <li className="Listado" key={prod.id}>{prod.title} Precio unit: $ {prod.price} <button className="eliminarItem" onClick={() => removeItem(prod.id)}>X</button> </li>)}
             
-            <h2>Total: $ { getTotal ()} </h2>
-            <button onClick={createOrder}>Terminar mi compra</button>
-            <button onClick={clearCart}>Vaciar carrito</button>
+            <h2 className="Total">Total: $ { getTotal ()} </h2>
+            <button className="botonCompra" onClick={createOrder}>Terminar mi compra</button>
+            <button className="botonVaciar" onClick={clearCart}>Vaciar carrito</button>
         </div>
     )
 }

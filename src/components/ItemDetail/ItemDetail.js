@@ -5,6 +5,7 @@ import CartContext from '../CartContext/CartContext'
 import { useNotification } from '../../notification/notification'
 import { Link } from 'react-router-dom'
 
+
 const ItemDetail = ({id, title, img, description, price, stock}) => {
 
     const { addItem, isInCart } = useContext (CartContext)
@@ -25,12 +26,12 @@ const ItemDetail = ({id, title, img, description, price, stock}) => {
                 <img className='Imagen' src= {img} alt= {title}/>
             </picture>
             <section>
-                <p>Descripción: {description}</p>
+                <p className='Descripcion'>Descripción: {description}</p>
                 <p>Precio: $ {price}</p>
             </section>
             <footer>
 
-            { isInCart(id) ? <Link to='/cart'>Ir al carrito</Link> :  <ItemCount onAdd={handleOnAdd} stock={stock}/> }
+            { isInCart(id) ? <Link className='irAlCarrito' to='/cart'>Ir al carrito</Link> :  <ItemCount onAdd={handleOnAdd} stock={stock}/> }
             
             </footer>
         </article>

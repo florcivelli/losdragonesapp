@@ -1,0 +1,11 @@
+.NavLink {
+    text-decoration: none;
+    justify-content: space-around;
+    color: blueviolet;
+   
+}
+
+.contenedorNavBar {
+    display: flex;
+    justify-content: space-around;
+}

@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import CartContext from '../CartContext/CartContext'; 
+import './NavBar.css'
 
 const NavBar = () => {
 
@@ -13,12 +14,12 @@ const NavBar = () => {
     return (
         <nav>
             <Navbar bg="light" variant="light">
-                <Container>
+                <Container className='contenedorNavBar'>
                 <Navbar.Brand href="#home">Los Dragones Vinos</Navbar.Brand>
                 <Nav className="me-auto">
-                <NavLink to= '/'>Home</NavLink>
-                <NavLink to= '/category/tintos'>Tintos</NavLink>
-                <NavLink to= '/category/blancos'>Blancos</NavLink>
+                <NavLink className= "NavLink" to= '/'>Home</NavLink>
+                <NavLink className= "NavLink" to= '/category/tintos'>Tintos</NavLink>
+                <NavLink className= "NavLink" to= '/category/blancos'>Blancos</NavLink>
                 </Nav>
                 </Container>
             </Navbar>

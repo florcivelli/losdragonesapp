@@ -1,7 +1,10 @@
 
 .CartWidget {
-    height: 25px;  
+    height: 30px;  
     display: flex;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
+    text-decoration: none;
+    flex-direction: row-reverse;
+    color: blueviolet;
 }   

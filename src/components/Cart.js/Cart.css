@@ -1,0 +1,45 @@
+h1 {
+    color: #A56CBC;
+    font-size: 40px;
+    margin: 20px;
+}
+
+.contenedorCart{
+    width: 400px;
+    padding: 20px;
+    margin: 30px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+.Listado {
+    list-style: none;
+}
+
+.botonCompra {
+    display: block;
+    background-color: lightpink;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.botonVaciar {
+    display: block;
+    background-color: rgb(rgb(236, 192, 200));
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+.eliminarItem {
+    width: 30px;
+    height: 30px;
+}
+
